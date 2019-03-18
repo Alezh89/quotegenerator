@@ -51,7 +51,7 @@ var movie = [
 
 //get a random number between 1 and the quantaty of the array 
 function rand(length){
-	randNumber = Math.floor(Math.random() * (length + 1));
+	randNumber = Math.floor(Math.random() * (length));
 	return randNumber;
 };
 
