@@ -7,7 +7,7 @@
   <meta name="description" content="quote generator">
   <link href="css/style.css" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Kalam|Roboto|Srisakdi" rel="stylesheet">
-  <script type = "text/javascript" src = "js/QuoteMovieGen.js"></script>
+  <script type = "text/javascript" src = "js/QuoteGen.js"></script>
 </head>
 
 <body>
@@ -23,11 +23,11 @@
 <div class="containerCenter menu">
 
 <ul>
-	<input class="button" value="Give me a movie quote" type="button" onclick="act()">
+	<input id="movieQuote" class="button" value="Give me a movie quote" type="button" onclick="generateQuote()">
 	<a class="button" id="backButton" href="index.html"><li>Back to the main menu</li></a>
 	<form>
   	Change the quantity of quotes (between 1 and 5):
-  	<input id="quant" type="number" name="quantity" min="1" max="5" value="1">
+  	<input id="numOfQuotes" type="number" name="quantity" min="1" max="5" value="1">
 	</form>	
 </ul>
 </div>
