@@ -1,8 +1,7 @@
-var beggining;
-var middle;
-var end;
+// set 3 arrays containing parts of a quote
+//Generator 1
 
-beggining = [
+var begginingQuote = [
 'Beauty',
 'Bravery',
 'Brilliance',
@@ -56,7 +55,7 @@ beggining = [
 'Wit'
 ]
 
-middle = [
+var middleQuote = [
 "forms",
 "leads to",
 "helps with",
@@ -77,7 +76,7 @@ middle = [
 "covers"
 ]
 
-end = [
+var endQuote = [
 'Adoration',
 'Amazement',
 'Anger',
@@ -120,20 +119,95 @@ end = [
 'Worry'
 ]
 
-var endLow = end.map(function(name){	
+//set an array of 3 arrays where 'movie [0][x][y]' and 'movie [1][x][y]' and 'movie [2][x][y]' is a movie with its title
+//Generator 2
+
+var movies = [
+[
+"I'm going to make him an offer he can't refuse.",
+"May the Force be with you",
+"You talking to me?", 
+"I love the smell of napalm in the morning.",
+"I'll be back.",
+"Mama always said life was like a box of chocolates. You never know what you're gonna get.",
+"Houston, we have a problem.",
+"Keep your friends close, but your enemies closer.",
+"You call that a hit?",
+"Here's Johnny!",
+"Hasta la vista, baby.",
+"Carpe diem. Seize the day, boys. Make your lives extraordinary.",
+"I'm king of the world!",
+"They may take our lives, but they'll never take our freedom!", 
+"I will look for you, I will find you, and I will kill you.", 
+"Chewie, we're home.", 
+"Say ‘what’ again. Say ‘what’ again, I dare you, I double dare you motherfucker, say what one more Goddamn time!",
+"I mean, funny like I'm a clown? I amuse you?",
+"Say hello to my little friend!", 
+"Why so serious?",
+"The first rule of Fight Club is: You do not talk about Fight Club." 
+],
+[
+"The Godfather",
+"Star Wars",
+"Taxi Driver",
+"Apocalypse Now",
+"The Terminator",
+"Forrest Gump",
+"Apollo 13",
+"The Godfather II",
+"Hellbound",
+"The Shining",
+"Terminator 2: Judgment Day",
+"Dead Poets Society",
+"Titanic",
+"Braveheart",
+"Taken",
+"Star Wars Episode VII: The Force Awakens",
+"Pulp Fiction",
+"Goodfellas",
+"Scarface",
+"The Dark Knight",
+"Fight Club"
+],
+[
+"1972",
+"1977",
+"1976",
+"1979",
+"1984",
+"1994",
+"1995",
+"1974",
+"1991",
+"1980",
+"1991​​​​​",
+"1989",
+"1997",
+"1995",
+"2008",
+"2015",
+"1994",
+"1990",
+"1983",
+"2008",
+"1999"
+]
+];
+
+var endQuoteLow = endQuote.map(function(name){	
 	name = name.toLowerCase();
 	return name;	
 });
 
 //get a random number between 1 and the quantaty of a designated array 
-function rand(length){
+function randomInt(length){
 	randNumber = Math.floor(Math.random() * (length));
 	return randNumber;
 };
 
 //function that will give 1 to 5 quotes when the botton is clicked 
-function act() {
-	var numOfQuotes = document.getElementById("quant").value;
+function generateQuote() {
+	var numOfQuotes = document.getElementById("numOfQuotes").value;
 
 	//limils on number of quotes indicated by user
 	if (numOfQuotes > 5) {
@@ -143,9 +217,22 @@ function act() {
 	};
 
 	var result = '';
-	for (var i = 0; i < numOfQuotes; i++) {		
-	var oneQuote = beggining[rand(beggining.length)] + " " + middle[rand(middle.length)] + " " + endLow[rand(endLow.length)];
-	result += "'" + oneQuote + "'<br>";	
-	};	
+	var fancyQuotePage = document.getElementById('fancyQuote');
+	var movieQuotePage = document.getElementById('movieQuote');
+
+	//for load speed purposes I made loops inside if-else but not other way round
+		if (fancyQuotePage){
+			for (var i = 0; i < numOfQuotes; i++) {				
+			var oneQuote = begginingQuote[randomInt(begginingQuote.length)] + " " + middleQuote[randomInt(middleQuote.length)] + " " + endQuoteLow[randomInt(endQuoteLow.length)];	
+			result += "'" + oneQuote + "'<br>";	
+			};	
+		} else if (movieQuotePage) {
+			for (var i = 0; i < numOfQuotes; i++) {				
+			var randNumber = randomInt(movies[0].length);
+			var oneQuote = "'" + movies[0][randNumber] + "' " + movies[1][randNumber] + ', ' + movies[2][randNumber];	
+			result += oneQuote + "<br>";		
+			};
+		};
 	document.getElementById("quote").innerHTML = result;
 };
+
