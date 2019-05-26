@@ -1,5 +1,6 @@
 # Quotations generator
-Quotation generator https://alezh89.github.io/quotegenerator/
+ 
+[Quotation generator](https://alezh89.github.io/quotegenerator/)
 
 ## Technologies
 
