@@ -224,13 +224,13 @@ function generateQuote() {
 		if (fancyQuotePage){
 			for (var i = 0; i < numOfQuotes; i++) {				
 			var oneQuote = begginingQuote[randomInt(begginingQuote.length)] + " " + middleQuote[randomInt(middleQuote.length)] + " " + endQuoteLow[randomInt(endQuoteLow.length)];	
-			result += "'" + oneQuote + "'<br>";	
+			result += "<p>'" + oneQuote + "'</p>";	
 			};	
 		} else if (movieQuotePage) {
 			for (var i = 0; i < numOfQuotes; i++) {				
 			var randNumber = randomInt(movies[0].length);
 			var oneQuote = "'" + movies[0][randNumber] + "' " + movies[1][randNumber] + ', ' + movies[2][randNumber];	
-			result += oneQuote + "<br>";		
+			result += "<p>" + oneQuote + "</p>";		
 			};
 		};
 	document.getElementById("quote").innerHTML = result;
